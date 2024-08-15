@@ -1,0 +1,9 @@
+{
+  "rules": {
+    ".read": "now < 1725577200000",
+    ".write": "now < 1725577200000",
+    "temperature_logs": {
+      ".indexOn": ["timestamp"]
+    }
+  }
+}
