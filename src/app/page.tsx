@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { getTemperatureData } from "../app/helpers/getTemperature";
 import TemperatureGauge from "./components/TempGuage";
-// import TemperatureLineChart from "./components/TempChart";
 import Modal from 'react-modal';
 
 export default function Home() {
@@ -41,8 +40,8 @@ export default function Home() {
           <p className="text-lg font-semibold">Alert: Temperature is out of the threshold range!</p>
         </div>
       )}
-      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-10">
-        <h1 className="text-2xl font-bold">ColdGuard</h1>
+      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10">
+        <h1 className="text-2xl font-bold mb-2 md:mb-0">ColdGuard</h1>
         <button 
           onClick={openModal}
           className="font-medium bg-gray-100 text-gray-800 py-2 px-4 rounded-md hover:bg-white transition-all"
@@ -53,16 +52,14 @@ export default function Home() {
       
       <TemperatureGauge temperature={temperature} minThreshold={minThreshold} maxThreshold={maxThreshold} />
 
-      <main className="flex flex-1 flex-col items-center justify-center p-6 bg-gray-100">
+      <main className="flex lg:flex-1 flex-col items-center justify-center p-6 bg-gray-100">
         <div className="text-center">
           {temperature !== null ? (
-            <h2 className="text-3xl font-semibold text-gray-800">Current Temperature: {temperature}°C</h2>
+            <h2 className="text-xl md:text-3xl font-semibold text-gray-800">Current Temperature: {temperature}°C</h2>
           ) : (
             <p className="text-xl text-gray-600">Loading...</p>
           )}
         </div>
-        
-        {/* <TemperatureLineChart /> */}
       </main>
       
       <Modal
