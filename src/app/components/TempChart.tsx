@@ -17,7 +17,7 @@ const TemperatureLineChart: React.FC = () => {
       const historicalData = (await getHistoricalTemperatureData()).data;
 
       // Convert object to array and sort by timestamp
-      const entries = Object.entries(historicalData).map(([key, value]) => [Number(key), value.temperature]);
+      const entries = Object.entries(historicalData).map(([key, value]: any) => [Number(key), value.temperature]);
       entries.sort((a, b) => a[0] - b[0]);
 
       // Limit to the last MAX_ENTRIES entries
