@@ -76,7 +76,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10">
+      {/* <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10">
         <div className="flex items-center gap-7">
           <Link href="/">
             <h1 className="text-2xl font-bold mb-2 md:mb-0 cursor-pointer">ColdGuard</h1>
@@ -91,12 +91,31 @@ export default function Dashboard() {
             <p className="cursor-pointer hover:underline">Our Team</p>
           </Link>
         </div>
-        <button 
-          onClick={openModal}
-          className="font-medium bg-gray-100 text-gray-800 py-2 px-4 rounded-md hover:bg-white transition-all"
-        >
-          Set Threshold
-        </button>
+      </header> */}
+
+      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10 md:h-[72px]">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mx-auto">
+          <Link href="/">
+            <h1 className="text-2xl font-bold mb-2 md:mb-0 cursor-pointer">ColdGuard</h1>
+          </Link>
+          <div className="flex items-center gap-10">
+            <Link href="/">
+              <p className="cursor-pointer hover:underline">Home</p>
+            </Link>
+            <Link href="/manual">
+              <p className="cursor-pointer hover:underline">Manual</p>
+            </Link>
+            <Link href="/team">
+              <p className="cursor-pointer hover:underline">Our Team</p>
+            </Link>
+          </div>
+          <button 
+            onClick={openModal}
+            className="font-medium bg-gray-100 text-gray-800 py-2 px-4 rounded-md hover:bg-white transition-all"
+          >
+            Set Threshold
+          </button>
+        </div>
       </header>
       
       <TemperatureGauge temperature={temperature} minThreshold={minThreshold} maxThreshold={maxThreshold} />

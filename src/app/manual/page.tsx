@@ -6,22 +6,25 @@ import Link from 'next/link';
 export default function ManualPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 text-gray-800">
-      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10 h-[72px]">
-        <div className="flex items-center gap-7">
+      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10 md:h-[72px]">
+        <div className="flex flex-col md:flex-row items-center gap-5 md:gap-10 mx-auto w-full">
           <Link href="/">
             <h1 className="text-2xl font-bold mb-2 md:mb-0 cursor-pointer">ColdGuard</h1>
           </Link>
-          <Link href="/">
-            <p className="cursor-pointer hover:underline">Home</p>
-          </Link>
-          <Link href="/manual">
-            <p className="cursor-pointer hover:underline">Manual</p>
-          </Link>
-          <Link href="/team">
-            <p className="cursor-pointer hover:underline">Our Team</p>
-          </Link>
+          <div className="flex items-center gap-10">
+            <Link href="/">
+              <p className="cursor-pointer hover:underline">Home</p>
+            </Link>
+            <Link href="/manual">
+              <p className="cursor-pointer hover:underline">Manual</p>
+            </Link>
+            <Link href="/team">
+              <p className="cursor-pointer hover:underline">Our Team</p>
+            </Link>
+          </div>
         </div>
       </header>
+
 
       <main className='p-10 container'>
         <section className="mb-6">

@@ -45,24 +45,26 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
-      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10 h-[72px]">
-        <div className="flex items-center gap-10">
+      <header className="flex items-center justify-between bg-gray-700 text-white p-4 px-6 md:px-10 md:h-[72px]">
+        <div className="flex flex-col md:flex-row items-center gap-5 md:gap-10 mx-auto w-full">
           <Link href="/">
             <h1 className="text-2xl font-bold mb-2 md:mb-0 cursor-pointer">ColdGuard</h1>
           </Link>
-          <Link href="/">
-            <p className="cursor-pointer hover:underline">Home</p>
-          </Link>
-          <Link href="/manual">
-            <p className="cursor-pointer hover:underline">Manual</p>
-          </Link>
-          <Link href="/team">
-            <p className="cursor-pointer hover:underline">Our Team</p>
-          </Link>
+          <div className="flex items-center gap-10">
+            <Link href="/">
+              <p className="cursor-pointer hover:underline">Home</p>
+            </Link>
+            <Link href="/manual">
+              <p className="cursor-pointer hover:underline">Manual</p>
+            </Link>
+            <Link href="/team">
+              <p className="cursor-pointer hover:underline">Our Team</p>
+            </Link>
+          </div>
         </div>
       </header>
 
-      <main className="container mx-auto py-10 min-h-[calc(100vh-128px)]">
+      <main className="container mx-auto py-10 min-h-[calc(100vh-128px)] px-5 md:px-0">
         <h2 className="text-2xl font-semibold mb-4 text-gray-800">All Devices</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {devices.map((device) => (
