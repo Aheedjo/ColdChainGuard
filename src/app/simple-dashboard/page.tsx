@@ -11,19 +11,13 @@ export default function SimpleDashboard() {
   const [temperature, setTemperature] = useState<number | null>(null);
   const [minThreshold, setMinThreshold] = useState<number>(0);
   const [maxThreshold, setMaxThreshold] = useState<number>(40);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-  const userEmail = localStorage.getItem('user-email') || 'maishanuahidjo@gmail.com';
 
   useEffect(() => {
     getTemperatureData((temperature: number) => {
       setTemperature(parseFloat(temperature.toFixed(2)));
       if (temperature < minThreshold || temperature > maxThreshold) {
         setShowAlert(true);
-        sendEmailAlert(temperature);
       } else {
         setShowAlert(false);
       }
@@ -45,27 +39,6 @@ export default function SimpleDashboard() {
     }
 
   }, [minThreshold, maxThreshold]);
-
-  const handleThresholdChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'min' | 'max') => {
-    const value = Number(e.target.value);
-    if (type === 'min') setMinThreshold(value);
-    else setMaxThreshold(value);
-  };
-
-  const sendEmailAlert = (temp: number) => {
-    const templateParams = {
-      subject: 'ColdChain',
-      message: `The current temperature is ${temp}°C, which is outside the set threshold of ${minThreshold}°C - ${maxThreshold}°C.`,
-      email: userEmail,
-    };
-  
-    emailjs.send('service_739q0fs', 'template_o8veyrt', templateParams, '1qjUF6DjZjE5gJPhV')
-      .then((result: any) => {
-        console.log('Email successfully sent!', result.text);
-      }, (error: any) => {
-        console.error('Error sending email:', error.text);
-      });
-  };  
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
@@ -89,44 +62,6 @@ export default function SimpleDashboard() {
         </main>
 
         <TemperatureLineChart />
-        
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          className="fixed inset-0 flex items-center justify-center p-4 bg-gray-800 bg-opacity-50"
-          overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-50"
-        >
-          <div className="bg-white p-6 shadow-lg max-w-md w-full text-gray-800 relative">
-            <div className="absolute right-5 top-5 cursor-pointer px-2 py-1 rounded-md bg-white hover:bg-gray-800 hover:text-white transition-all" onClick={closeModal}>
-              <p>X</p>
-            </div>
-            <h2 className="text-xl font-semibold mb-4">Set Temperature Thresholds</h2>
-            <label className="block mb-2">
-              Min Threshold: 
-              <input 
-                type="number"
-                value={minThreshold}
-                onChange={(e) => handleThresholdChange(e, 'min')}
-                className="ml-2 p-2 border rounded w-full"
-              />
-            </label>
-            <label className="block mb-4">
-              Max Threshold: 
-              <input 
-                type="number"
-                value={maxThreshold}
-                onChange={(e) => handleThresholdChange(e, 'max')}
-                className="ml-2 p-2 border rounded w-full"
-              />
-            </label>
-            <button
-              onClick={closeModal}
-              className="bg-gray-800 text-white p-2 rounded hover:bg-teal-600 transition duration-300 w-full"
-            >
-              Save
-            </button>
-          </div>
-        </Modal>
 
         <footer className="bg-gray-800 text-white text-center p-4">
           <p>&copy; 2024 Temperature Monitor</p>
