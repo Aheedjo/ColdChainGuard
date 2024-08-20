@@ -2,10 +2,8 @@
 
 import TemperatureGauge from "@/app/components/TempGuage";
 import { useEffect, useState } from "react";
-import Modal from 'react-modal';
 import TemperatureLineChart from "@/app/components/TempChart";
 import { getTemperatureData } from "../../app/helpers/getTemperature";
-import emailjs from 'emailjs-com';
 
 export default function SimpleDashboard() {
   const [temperature, setTemperature] = useState<number | null>(null);

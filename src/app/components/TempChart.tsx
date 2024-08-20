@@ -24,7 +24,11 @@ const TemperatureLineChart: React.FC = () => {
       const recentEntries = entries.slice(-MAX_ENTRIES);
 
       // Extract timestamps and temperatures from recent entries
-      const labels = recentEntries.map(([timestamp]) => new Date(timestamp).toLocaleTimeString());
+      const labels = recentEntries.map(([timestamp]) => {
+        const date = new Date(timestamp);
+        date.setHours(date.getHours() + 2); // Add 2 hours
+        return date.toLocaleTimeString('en-US', { timeZone: 'America/New_York' });
+      });
       const values = recentEntries.map(([_, temp]) => temp);
 
       // Detect sudden spikes
