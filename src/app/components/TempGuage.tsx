@@ -33,16 +33,15 @@ const TemperatureGauge: React.FC<TemperatureGaugeProps> = ({ temperature, minThr
     <div className="flex flex-1 md:flex-auto flex-col items-center justify-center p-4 bg-gray-800 shadow-lg relative">
       <GaugeChart
         id="temperature-gauge"
-        nrOfLevels={30}
+        nrOfLevels={40}
         percent={percentage}
         colors={[getColor(temperature)]}
-        arcWidth={0.3}
+        arcWidth={0.25}
         needleColor="#E5E7EB"
         formatTextValue={() => `${temperature}°C`}
       />
 
-      <div className="text-center lg:absolute right-10 top-0">
-        <h3 className="text-2xl font-semibold text-gray-800 mb-2">Thresholds</h3>
+      <div className="text-center lg:absolute right-10 top-2">
         <p className="text-lg text-gray-100">Min Threshold: <span className="font-semibold">{minThreshold}°C</span></p>
         <p className="text-lg text-gray-100">Max Threshold: <span className="font-semibold">{maxThreshold}°C</span></p>
       </div>
