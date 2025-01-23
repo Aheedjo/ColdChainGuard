@@ -54,6 +54,7 @@ export default function Dashboard() {
   };
 
   const sendEmailAlert = (temp: number) => {
+    // 
     const templateParams = {
       subject: 'ColdChain',
       message: `The current temperature is ${temp}°C, which is outside the set threshold of ${minThreshold}°C - ${maxThreshold}°C.`,
